@@ -52,6 +52,7 @@ class ChooseView(nextcord.ui.Select):
                 help_embed.add_field(name="`/seek` {{sec}}",value="กอเพลง",inline=False)
                 help_embed.add_field(name="`/info_filters` ",value="ดูข้อมูลfilter",inline=False)
                 help_embed.add_field(name="`/auto_play` {{on-off}}",value="สุ่มเพลงจากyoutubeเมื่อไม่มีเพลงเล่นต่อ",inline=False)
+                help_embed.add_field(name="`/volume` {{1-1000}}",value="ปรับระดับเสียง",inline=False)
                 help_embed.add_field(name="`/join` ",value="เชิญน้องมิช่าเข้าห้องเพลง",inline=False)
                 help_embed.add_field(name="`/disconnect`",value="ไล่น้องมิช่าออกจากห้อง",inline=False)
             case 'music filter':

@@ -67,5 +67,111 @@
         "role-dj": {
             "description": "สร้างยศdj"
         }
+    },
+    "setup": {
+        "report": {
+            "description": "สร้างห้องรับข้อความreport"
+        },
+        "join": {
+            "description": "สร้างห้องต้อนรับ"
+        },
+        "leave": {
+            "description": "สร้างห้องleave"
+        },
+        "tonton": {
+            "description": "ได้ชมคลิปที่คุณภาพก่อนใครจาก tonton210"
+        }
+    },
+    "custom": {
+        "join": {
+            "description": "ปรับข้อความjoin"
+        },
+        "leave": {
+            "description": "ปรับข้อความleave"
+        },
+        "upload-image-join": {
+            "description": "ปรับภาพjoin"
+        },
+        "upload-image-leave": {
+            "description": "ปรับภาพleave"
+        }
+    },
+    "test": {
+        "join": {
+            "description": "ทดสอบคนเข้า"
+        },
+        "leave": {
+            "description": "ทดสอบคนออก"
+        }
+    },
+    "music": {
+        "join": {
+            "description": "เชิญน้องมิช่าเข้าห้องเพลง"
+        },
+        "disconnect": {
+            "description": "ไล่น้องมิช่าออกจากห้อง"
+        },
+        "play": {
+            "description": "เล่นเพลงจากurl หรือ ชื่อเพลง"
+        },
+        "skip": {
+            "description": "ข้ามเพลงที่เล่นอยู่"
+        },
+        "stop": {
+            "description": "หยุดเพลงที่เล่นอยู่"
+        },
+        "pause": {
+            "description": "พักเพลงที่เล่นอยู่"
+        },
+        "now": {
+            "description": "ดูข้อมูลเพลงที่เล่นอยู่"
+        },
+        "queue": {
+            "description": "ดูqueue"
+        },
+        "remove": {
+            "description": "ลบเพลงออกจากqueue"
+        },
+        "repeat": {
+            "description": "loopเพลง โดย\n\t1none คือ ยกเลิกloop\n\t2single คือ loopเพลงเดียว\n\t3queue คือ ทั้งqueue"
+        },
+        "shuffle": {
+            "description": "สุ่มเพลงจากplaylist"
+        },
+        "volume": {
+            "description": "ปรับระดับเสียง"
+        },
+        "info-filters": {
+            "description": "ดูข้อมูลfilter"
+        },
+        "auto-play": {
+            "description": "สุ่มเพลงจากyoutubeเมื่อไม่มีเพลงเล่นต่อ"
+        }
+    },
+    "filter": {
+        "bassboost": {
+            "description": "bassbost ปรับระดับeq"
+        },
+        "timescale": {
+            "description": "ความเร็วเพลง, ระดับเสียง, rate"
+        },
+        "karaoke": {
+            "description": "ปรับfilter karaoke"
+        },
+        "tremolo": {
+            "description": "tremolo"
+        },
+        "vibrato": {
+            "description": "vibrato"
+        },
+        "smoothing": {
+            "description": "smoothing"
+        },
+        "rotation": {
+            "description": "rotation"
+        },
+        "clean": {
+            "description": "ล้างfilter"
+        }
     }
 }
