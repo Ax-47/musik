@@ -27,16 +27,19 @@ async def join(self,ctx:Interaction|Context,typ:bool=False)->bool|int:
                 await ctx.send(embed=embed)
             return False,3
         player.store('channel', ctx.channel.id)
+        
         ca=await author.voice.channel.connect(cls=pyer)
         await ctx.channel.guild.change_voice_state(channel=ca.channel, self_deaf=True)
         if typ:
             embed.title="มาละจ้า"
             await ctx.send(embed=embed)
-        return True
+        return True,0
     else:
         if v_client.channel.id != author.voice.channel.id:
             if typ:
                 embed.title="เข้าห้องเดียวกันสิ"
                 await ctx.send(embed=embed)
+                return False,4
             return False,4
+        return True,0
 
