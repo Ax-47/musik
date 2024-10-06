@@ -3,14 +3,12 @@ server: # REST and WS server
   address: 0.0.0.0
 lavalink:
   plugins:
-    - dependency: "me.rohank05:lavalink-filter-plugin:0.0.1" # replace x.x.x with the latest release tag!
-      repository: "https://jitpack.io"
-    - dependency: "com.dunctebot:skybot-lavalink-plugin:1.3.3"
-      repository: "https://m2.duncte123.dev/releases"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.8.3"
+      snapshot: false # Set to true if you want to use a snapshot version.
   server:
-    password: "thampomungdoo"
+    password: "youshallnotpass"
     sources:
-      youtube: true
+      youtube: false
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -29,19 +27,19 @@ lavalink:
     soundcloudSearchEnabled: true
     gc-warnings: true
     #ratelimit:
-      #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
-      #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink
-      #strategy: "RotateOnBan" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
-      #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
-      #retryLimit: -1 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
-    #youtubeConfig: # Required for avoiding all age restrictions by YouTube, some restricted videos still can be played without.
-      #email: "" # Email of Google account
-      #password: "" # Password of Google account
+    #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
+    #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink
+    #strategy: "RotateOnBan" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
+    #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
+    #retryLimit: -1 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
+    # youtubeConfig: # Required for avoiding all age restrictions by YouTube, some restricted videos still can be played without.
+    # email: "" # Email of Google account
+    # password: "" # Password of Google account
     #httpConfig: # Useful for blocking bad-actors from ip-grabbing your music node and attacking it, this way only the http proxy will be attacked
-      #proxyHost: "localhost" # Hostname of the proxy, (ip or domain)
-      #proxyPort: 3128 # Proxy port, 3128 is the default for squidProxy
-      #proxyUser: "" # Optional user for basic authentication fields, leave blank if you don't use basic auth
-      #proxyPassword: "" # Password for basic authentication
+    #proxyHost: "localhost" # Hostname of the proxy, (ip or domain)
+    #proxyPort: 3128 # Proxy port, 3128 is the default for squidProxy
+    #proxyUser: "" # Optional user for basic authentication fields, leave blank if you don't use basic auth
+    #proxyPassword: "" # Password for basic authentication
 
 metrics:
   prometheus:

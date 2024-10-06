@@ -1,13 +1,27 @@
-# musik projekt
-
 # muzik prodzhekt
 
-# basic
+## how to run
 
-play 
+config .env
+
+```fish
+python -m venv venv
+docker-compose up -d # if u use windown.
+docker compose up -d # if u use super advanced os like arch linux.
+source venv/bin/activate.fish
+pip install -r requirements.txt
+python src/main.py
+
+```
+
+## commands
+
+### basic
+
+play
 volume
 auto_play
-now 
+now
 queue
 info_filters
 remove
@@ -19,9 +33,9 @@ pause
 disconnect
 seek
 Dj role
-Vote action 
+Vote action
 
-# filter
+### filter
 
 bassbost
 timescale
@@ -34,7 +48,7 @@ depth
 frequency
 clean
 
-# join-leave
+### join-leave
 
 Set-join
 Set-leave
@@ -42,13 +56,12 @@ Custom embed join/leave title description image thumbnail auth footer
 
 Url or upload images
 
-# report message
+### report message
 
 Set-report-log
 report-message
 
-
-# youtube noti
+### youtube noti
 
 Set-tonton
 websub

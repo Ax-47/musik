@@ -10,7 +10,7 @@ async def join(self,ctx:Interaction|Context,typ:bool=False)->bool|int:
             embed.title="ใช้ในserverเท่านั้น"
             await ctx.send(embed=embed)
         return False,1
-    player = self.bot.lavalink.player_manager.create(ctx.guild.id)
+    player = self.lavalink.player_manager.create(ctx.guild.id)
     typeofctx=type(ctx) is Interaction
     author = ctx.user if typeofctx else ctx.author
     if not author.voice or not author.voice.channel:
