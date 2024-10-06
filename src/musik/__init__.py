@@ -1,7 +1,37 @@
+import os
+
 import nextcord
+from dotenv import load_dotenv
 from nextcord.ext.commands import Bot
 
 import lavalink
+
+load_dotenv()
+# Retrieve environment variables
+host = os.getenv("NODE_HOST")
+port = os.getenv("NODE_PORT")
+password = os.getenv("NODE_PASSWORD")
+region = os.getenv("NODE_REGION")  # Fixed typo: "NODE_REGSION" to "NODE_REGION"
+name = os.getenv("NODE_NAME")
+app_id = os.getenv("APP_ID")
+
+# Check if any of the environment variables are None
+if None in (host, port, password, region, name, app_id):
+    print("One or more environment variables are not set.")
+    if host is None:
+        print("NODE_HOST is not set.")
+    if port is None:
+        print("NODE_PORT is not set.")
+    if password is None:
+        print("NODE_PASSWORD is not set.")
+    if region is None:
+        print("NODE_REGION is not set.")
+    if name is None:
+        print("NODE_NAME is not set.")
+    if app_id is None:
+        print("APP_ID is not set.")
+
+    sys.exit(1)
 
 
 class player(nextcord.VoiceClient):
@@ -14,9 +44,13 @@ class player(nextcord.VoiceClient):
             # Instantiate a client if one doesn't exist.
             # We store it in `self.client` so that it may persist across cog reloads,
             # however this is not mandatory.
-            self.client.lavalink = lavalink.Client(client.user.id)
+            self.client.lavalink = lavalink.Client(app_id)
             self.client.lavalink.add_node(
-                "localhost", 2333, "youshallnotpass", "sg", "default-node"
+                host,
+                port,
+                password,
+                region,
+                name,
             )
 
         # Create a shortcut to the Lavalink client here.

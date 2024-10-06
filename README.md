@@ -4,6 +4,16 @@
 
 config .env
 
+```mongodb
+use musik; // Create or switch to the "musik" database
+
+db.createCollection("captcha"); // Create "captcha" collection
+db.createCollection("feedback"); // Create "feedback" collection
+db.createCollection("guild"); // Create "guild" collection
+db.createCollection("tonton"); // Create "tonton" collection
+
+```
+
 ```fish
 python -m venv venv
 docker-compose up -d # if u use windown.

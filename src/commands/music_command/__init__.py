@@ -1,12 +1,14 @@
+import os
 import re
+import sys
 
+from dotenv import load_dotenv
 from nextcord import Interaction, slash_command
 from nextcord.ext import commands
 from nextcord.ext.commands import AutoShardedBot
 
 import lavalink
 from database import SPOTIFY_ID, SPOTIFY_SECRET
-from musik import player as pyer
 from spotify import *
 
 from .auto_play import *
@@ -35,6 +37,32 @@ from .vote import *
 
 URL_RX = re.compile(r"https?://(?:www\.)?.+")
 
+# Retrieve environment variables
+host = os.getenv("NODE_HOST")
+port = os.getenv("NODE_PORT")
+password = os.getenv("NODE_PASSWORD")
+region = os.getenv("NODE_REGION")  # Fixed typo: "NODE_REGSION" to "NODE_REGION"
+name = os.getenv("NODE_NAME")
+app_id = os.getenv("APP_ID")
+
+# Check if any of the environment variables are None
+if None in (host, port, password, region, name, app_id):
+    print("One or more environment variables are not set.")
+    if host is None:
+        print("NODE_HOST is not set.")
+    if port is None:
+        print("NODE_PORT is not set.")
+    if password is None:
+        print("NODE_PASSWORD is not set.")
+    if region is None:
+        print("NODE_REGION is not set.")
+    if name is None:
+        print("NODE_NAME is not set.")
+    if app_id is None:
+        print("APP_ID is not set.")
+
+    sys.exit(1)
+
 
 class Musik:
     def __init__(self, bot: AutoShardedBot, guild_coll) -> None:
@@ -43,10 +71,14 @@ class Musik:
         self.spotify_client: Client
         self.guild = guild_coll
         if not hasattr(bot, "lavalink"):
-            self.bot.lavalink = lavalink.Client(896217686630101002)
+            self.bot.lavalink = lavalink.Client(app_id)
             # Host, Port, Password, Region, Name
             self.bot.lavalink.add_node(
-                "localhost", 2333, "youshallnotpass", "sg", "default-node"
+                host,
+                port,
+                password,
+                region,
+                name,
             )
 
             self.spotify_client = Client(SPOTIFY_ID, SPOTIFY_SECRET)

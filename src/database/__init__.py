@@ -1,5 +1,6 @@
-import os
 import asyncio
+import os
+
 import motor.motor_asyncio
 from dotenv import load_dotenv
 
@@ -17,7 +18,8 @@ if __name__ != "__main__":
     SPOTIFY_ID = os.getenv("SPOTIFY_ID")
     SPOTIFY_SECRET = os.getenv("SPOTIFY_SECRET")
     CLINENT = motor.motor_asyncio.AsyncIOMotorClient(
-        os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
+        os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000
+    )
     CLINENT.get_io_loop = asyncio.get_running_loop
     DATABASE = CLINENT.musik
     GUILD = DATABASE.guild
