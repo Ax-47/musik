@@ -4,19 +4,18 @@ class player(nextcord.VoiceClient):
     def __init__(self, client:Bot, channel: nextcord.abc.Connectable) -> None:
         self.client = client
         self.channel = channel
-        if hasattr(self.client, 'lavalink'):
-            self.lavalink:lavalink.Client = self.client.lavalink
-        else:
-            self.client.lavalink:lavalink.Client = lavalink.Client(client.user.id)
-            self.client.lavalink.add_node(
-                'localhost',
-                2333,
-                'thampomungdoo',
-                'sg',
-                'default-node'
-            )
-            self.lavalink = self.client.lavalink
+        self.guild_id = channel.guild.id
+        self._destroyed = False
+        if not hasattr(self.client, 'lavalink'):
+            # Instantiate a client if one doesn't exist.
+            # We store it in `self.client` so that it may persist across cog reloads,
+            # however this is not mandatory.
+            self.client.lavalink = lavalink.Client(client.user.id)
+            self.client.lavalink.add_node(host='0.0.0.0', port=2333, password='youshallnotpass',
+                                          region='sg', name='default-node')
 
+        # Create a shortcut to the Lavalink client here.
+        self.lavalink = self.client.lavalink
     async def on_voice_server_update(self, data):
         # the data needs to be transformed before being handed down to
         # voice_update_handler

@@ -36,30 +36,32 @@ class Musik():
     def __init__(self, bot: AutoShardedBot, guild_coll) -> None:
         self.bot = bot
         self.cache = None
-        self.bot.lavalink: lavalink.Client
         self.spotify_client: Client
         self.guild = guild_coll
         if not hasattr(bot, 'lavalink'):
-            self.bot.lavalink: lavalink.Client = lavalink.Client(
-                1054981299334549514)
+            self.bot.lavalink= lavalink.Client(
+                896217686630101002) 
             # Host, Port, Password, Region, Name
             self.bot.lavalink.add_node(
-                '127.0.0.1', 2333, 'thampomungdoo', 'sg', 'default-node')
+                '0.0.0.0', 2333, 'youshallnotpass', 'sg', 'default-node')
 
             self.spotify_client = Client(SPOTIFY_ID, SPOTIFY_SECRET)
-        lavalink.add_event_hook(self.track_hook)
-
-    async def track_hook(self, event):
-        if isinstance(event, lavalink.events.TrackEndEvent):
-            if event.player.auto_play:
-                return await auto_play(self, event.player)
-            guild = self.bot.get_guild(event.player.guild_id)
-            if guild.voice_client is not None and not event.player.queue:
-                return await guild.voice_client.disconnect(force=True)
-        if isinstance(event, lavalink.events.QueueEndEvent):
-            guild = self.bot.get_guild(event.player.guild_id)
-            if guild.voice_client is not None:
-                return await guild.voice_client.disconnect(force=True)
+            print("created")
+        self.lavalink = self.bot.lavalink
+    
+    
+    @lavalink.listener(lavalink.events.TrackStartEvent)
+    async def TrackEndEvent_hook(self, event: lavalink.events.TrackStartEvent):
+        if event.player.auto_play:
+            return await auto_play(self, event.player)
+        guild = self.bot.get_guild(event.player.guild_id)
+        if guild.voice_client is not None and not event.player.queue:
+            return await guild.voice_client.disconnect(force=True)
+    @lavalink.listener(lavalink.events.QueueEndEvent)
+    async def track_hook(self, event:lavalink.events.QueueEndEvent):
+        guild = self.bot.get_guild(event.player.guild_id)
+        if guild.voice_client is not None:
+            return await guild.voice_client.disconnect(force=True)
 
     def unload(self):
         self.bot.lavalink._event_hooks.clear()

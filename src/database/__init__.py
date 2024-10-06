@@ -9,19 +9,18 @@ def chack_database(clinent):
         clinent.admin.command("ismaster")
         print("!error")
     except Exception as e:
-        print("error")
+        print(f"error: {e}")
 
 
 if __name__ != "__main__":
     load_dotenv()
     SPOTIFY_ID = os.getenv("SPOTIFY_ID")
     SPOTIFY_SECRET = os.getenv("SPOTIFY_SECRET")
-
     CLINENT = motor.motor_asyncio.AsyncIOMotorClient(
         os.getenv("MONGOURI"), serverSelectionTimeoutMS=5000)
     CLINENT.get_io_loop = asyncio.get_running_loop
-    DATABASE = CLINENT.ngan_song_kru
-    GUILD = DATABASE.Guild
+    DATABASE = CLINENT.musik
+    GUILD = DATABASE.guild
     CAPTCHA = DATABASE.captcha
     TONTON = DATABASE.tonton
     FEEDBACK = DATABASE.feedback

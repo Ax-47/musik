@@ -8,19 +8,16 @@ class music_commands(Cog):
         self.bot = bot
         self.player =Musik(bot,GUILD)
         
-
     # basic
-    
-    
-    @slash_command(name="join", description="Asdasd")
+    @slash_command(name="join", description="Asdasd",force_global=True)
     async def join(self, inter: Interaction) -> None:
         await self.player.join_to_channel(inter,True)
         
-    @slash_command(name="disconnect", description="Asdasd")
+    @slash_command(name="disconnect", description="Asdasd",force_global=True)
     async def disconnect(self, inter: Interaction) -> None:
         await self.player.disconnect(inter)
         
-    @slash_command(name="play", description="Asdasd")
+    @slash_command(name="play", description="Asdasd",force_global=True)
     async def play(self, inter: Interaction,query: str) -> None:
         await self.player.play(inter,query)
         
@@ -28,54 +25,54 @@ class music_commands(Cog):
     async def message_play(self, inter: Interaction, message: nextcord.Message) -> None:
         await self.player.play(inter,message.content)
         
-    @slash_command(name="skip", description="Asdasd")
+    @slash_command(name="skip", description="Asdasd",force_global=True)
     async def skip(self, inter: Interaction) -> None:
         await self.player.skip(inter)      
     
-    @slash_command(name="stop", description="Asdasd")
+    @slash_command(name="stop", description="Asdasd",force_global=True)
     async def stop(self, inter: Interaction) -> None:
         await self.player.stop(inter) 
         
-    @slash_command(name="pause", description="Asdasd")
+    @slash_command(name="pause", description="Asdasd",force_global=True)
     async def pause(self, inter: Interaction) -> None:
         await self.player.pause(inter) 
         
-    @slash_command(name="now", description="Asdasd")
+    @slash_command(name="now", description="Asdasd",force_global=True)
     async def now(self, inter: Interaction) -> None:
         await inter.response.defer()
         await self.player.now(inter) 
  
-    @slash_command(name="queue", description="Asdasd")
+    @slash_command(name="queue", description="Asdasd",force_global=True)
     async def queue(self, inter: Interaction) -> None:
         await inter.response.defer()
         await self.player.queue(inter)     
         
-    @slash_command(name="remove", description="Asdasd")
+    @slash_command(name="remove", description="Asdasd",force_global=True)
     async def remove(self, inter: Interaction,index:int= nextcord.SlashOption(min_value=1)) -> None:
         await self.player.remove(inter,index)
         
-    @slash_command(name="repeat", description="Asdasd")
+    @slash_command(name="repeat", description="Asdasd",force_global=True)
     async def repeat(self, inter: Interaction,loop:int=nextcord.SlashOption(name="loop",choices={"None":0,"single":1,"queue":2},default=0)) -> None:
         await self.player.repeat(inter,loop)
         
-    @slash_command(name="shuffle", description="Asdasd")
+    @slash_command(name="shuffle", description="Asdasd",force_global=True)
     async def shuffle(self, inter: Interaction) -> None:
         await self.player.shuffle(inter) 
         
-    @slash_command(name="seek", description="Asdasd")
+    @slash_command(name="seek", description="Asdasd",force_global=True)
     async def seek(self, inter: Interaction,sec:int) -> None:
         await self.player.seek(inter,sec)   
       
-    @slash_command(name="volume", description="Asdasd")
+    @slash_command(name="volume", description="Asdasd",force_global=True)
     async def volume(self, inter: Interaction,volume:int= nextcord.SlashOption(min_value=1,max_value=1000)) -> None:
         await self.player.volume(inter,volume) 
     
-    @slash_command(name="info-filters", description="Asdasd")
+    @slash_command(name="info-filters", description="Asdasd",force_global=True)
     async def info_filters(self, inter: Interaction) -> None:
         await inter.response.defer()
         await self.player.info_filters(inter)  
             
-    @slash_command(name="auto-play", description="Asdasd")
+    @slash_command(name="auto-play", description="Asdasd",force_global=True)
     async def auto_play (self, inter: Interaction) -> None:
         await self.player.set_auto_play(inter)
     # filters

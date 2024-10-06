@@ -9,8 +9,8 @@ URL_RX = re.compile(r'https?://(?:www\.)?.+')
 
 async def play(self, Inter: Interaction | Context, query: str):
     state = await self.join_to_channel(Inter)
-
-    player: lavalink.models.DefaultPlayer = self.bot.lavalink.player_manager.get(
+    
+    player: lavalink.DefaultPlayer = self.bot.lavalink.player_manager.get(
         Inter.guild.id)
     query = query.strip('<>')
     embed = nextcord.Embed(color=0xdc4700)
@@ -49,6 +49,7 @@ async def play(self, Inter: Interaction | Context, query: str):
             embed.set_thumbnail(
                 url="https://img.youtube.com/vi/{}/maxresdefault.jpg".format(track["info"]["identifier"]))
         embed.add_field(name="ผู้ขอเพลง", value=str(Inter.user.mention))
+        print(track)
         player.add(requester=Inter.user.id, track=track)
     await Inter.send(embed=embed)
     if not player.is_playing:
